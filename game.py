@@ -50,10 +50,10 @@ class Game:
     def load_images(self):
         """Load game assets such as player, enemy, and background images."""
         try:
-            self.player_right_img = pygame.image.load("/Users/salmon/work/comprog2/project/cowboy/game_photo/player_right.png").convert_alpha()
+            self.player_right_img = pygame.image.load("game_photo/player_right.png").convert_alpha()
             self.player_right_img = pygame.transform.scale(self.player_right_img, (40, 50))
 
-            self.player_left_img = pygame.image.load("/Users/salmon/work/comprog2/project/cowboy/game_photo/player_left.png").convert_alpha()
+            self.player_left_img = pygame.image.load("game_photo/player_left.png").convert_alpha()
             self.player_left_img = pygame.transform.scale(self.player_left_img, (40, 50))
         except:
             self.player_right_img = pygame.Surface((40, 50))
@@ -63,34 +63,34 @@ class Game:
             self.player_left_img.fill(RED)
 
         try:
-            self.enemy_img = pygame.image.load("/Users/salmon/work/comprog2/project/cowboy/game_photo/enemy.png").convert_alpha()
+            self.enemy_img = pygame.image.load("game_photo/enemy.png").convert_alpha()
             self.enemy_img = pygame.transform.scale(self.enemy_img, (40, 50))
         except:
             self.enemy_img = pygame.Surface((40, 50))
             self.enemy_img.fill(RED)
 
         try:
-            self.special_img = pygame.image.load("/Users/salmon/work/comprog2/project/cowboy/game_photo/special.png").convert_alpha()
+            self.special_img = pygame.image.load("game_photo/special.png").convert_alpha()
             self.special_img = pygame.transform.scale(self.special_img, (40, 50))
         except:
             self.special_img = pygame.Surface((40, 50))
             self.special_img.fill((255, 0, 255))  # Purple if special.png not found
 
         try:
-            self.shotgun_img = pygame.image.load("/Users/salmon/work/comprog2/project/cowboy/game_photo/shotgun enemy.png").convert_alpha()
+            self.shotgun_img = pygame.image.load("game_photo/shotgun enemy.png").convert_alpha()
             self.shotgun_img = pygame.transform.scale(self.shotgun_img, (40, 50))
         except:
             self.shotgun_img = pygame.Surface((40, 50))
             self.shotgun_img.fill((255, 165, 0))
 
         try:
-            self.background_img = pygame.image.load("/Users/salmon/work/comprog2/project/cowboy/game_photo/background.png").convert()
+            self.background_img = pygame.image.load("game_photo/background.png").convert()
             self.background_img = pygame.transform.scale(self.background_img, (self.WIDTH, self.HEIGHT))
         except:
             self.background_img = pygame.Surface((self.WIDTH, self.HEIGHT))
             self.background_img.fill(BLACK)
         try:
-            self.bullet_img = pygame.image.load("/Users/salmon/work/comprog2/project/cowboy/game_photo/Bullet.png").convert()
+            self.bullet_img = pygame.image.load("game_photo/Bullet.png").convert()
             self.bullet_img = pygame.transform.scale(self.shotgun_img, (10, 5))
         except:
             self.bullet_img = pygame.Surface((10, 5))
