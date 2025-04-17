@@ -95,6 +95,13 @@ class Game:
         except:
             self.bullet_img = pygame.Surface((10, 5))
             self.bullet_img.fill(YELLOW)
+        try:
+            self.platform_img = pygame.image.load("game_photo/platform.png").convert_alpha()
+            self.platform_img = pygame.transform.scale(self.platform_img, (200, 20))
+        except:
+            self.platform_img = pygame.Surface((60, 20))
+            self.platform_img.fill(GREEN)
+
 
         self.special_bullet_img = pygame.Surface((15, 10))
         self.special_bullet_img.fill((0, 255, 255))  # Cyan color for special bullets
@@ -231,7 +238,7 @@ class Game:
         pygame.draw.rect(self.screen, (100, 50, 0), self.ground_rect)
 
         for platform in self.platforms:
-            platform.draw(self.screen)
+            platform.draw(self.screen, self.platform_img)
 
         for enemy in self.enemies:
             enemy.draw(self.screen, self.enemy_img)
