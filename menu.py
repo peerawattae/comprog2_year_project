@@ -57,7 +57,7 @@ class MainMenu:
         pygame.display.set_caption(f"{graph_type.title()} Graph")
 
         try:
-            graph_image = pygame.image.load("graph_image.png")
+            graph_image = pygame.image.load(f"graph_photo/{graph_type}_graph.png")
         except pygame.error:
             print("Failed to load graph image.")
             return
@@ -111,11 +111,13 @@ class MainMenu:
                                 return
                             elif label == "Points":
                                 graph_show.save_graph("score")
+                                self.show_graph("score")
                             elif label == "Level":
                                 graph_show.save_graph("level")
+                                self.show_graph("level")
                             elif label == "Times Got Shot":
                                 graph_show.save_graph("times_shot")
-                            self.show_graph()
+                                self.show_graph("times_shot")
 
     def show_summary(self):
         graph_show = GraphShow()

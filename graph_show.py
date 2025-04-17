@@ -59,7 +59,7 @@ class GraphShow:
 
         plt.grid(True)
         plt.tight_layout()
-        plt.savefig("graph_image.png")
+        plt.savefig(f"{graph_type}_graph.png")
         plt.close()
 
     def get_summary_stats(self):
