@@ -50,7 +50,7 @@ pip install pygame matplotlib
 
 ```bash
 git clone <https://github.com/peerawattae/comprog2_year_project.git>
-cd <your-repo-folder>
+cd <comprog2_year_project>
 ```
 
 2. **Create or verify the `game_save.csv` file**
