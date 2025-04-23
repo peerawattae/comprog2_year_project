@@ -83,6 +83,7 @@ When inside the game (after clicking "Start Game"):
 | S   | Walk Down        |
 | D   | Walk Right       |
 | J   | Normal Shoot     |
+| space bar   | Jump     |
 
 
 ---
