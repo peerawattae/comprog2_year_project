@@ -84,9 +84,10 @@ class Game:
             self.shotgun_img.fill((255, 165, 0))
 
         try:
-            self.background_img = pygame.image.load("game_photo/background.png").convert()
+            self.background_img = pygame.image.load("game_photo/background2.png").convert()
             self.background_img = pygame.transform.scale(self.background_img, (self.WIDTH, self.HEIGHT))
         except:
+            print("can't load")
             self.background_img = pygame.Surface((self.WIDTH, self.HEIGHT))
             self.background_img.fill(BLACK)
         try:
@@ -101,7 +102,18 @@ class Game:
         except:
             self.platform_img = pygame.Surface((60, 20))
             self.platform_img.fill(GREEN)
-
+        try:
+            self.health_img = pygame.image.load("game_photo/heart_full.png").convert_alpha()
+            self.health_img = pygame.transform.scale(self.health_img, (20, 20))
+        except:
+            self.health_img = pygame.Surface((20, 20))
+            self.health_img.fill((0, 255, 0))  # Green fallback
+        try:
+            self.shotgun = pygame.image.load("game_photo/shotgun.png").convert_alpha()
+            self.shotgun = pygame.transform.scale(self.shotgun, (40, 40))
+        except:
+            self.shotgun = pygame.Surface((20, 20))
+            self.shotgun.fill((255, 100, 0))  # Green fallback
 
         self.special_bullet_img = pygame.Surface((15, 10))
         self.special_bullet_img.fill((0, 255, 255))  # Cyan color for special bullets
@@ -157,15 +169,15 @@ class Game:
             for enemy in self.enemies[:]:
                 enemy.move()
                 enemy.shoot(self.enemy_bullets)
-                if enemy.hit(self.bullets, self.special_bullets, self.shotgun_bullets, self.health_items):
+                if enemy.hit(self.bullets, self.special_bullets, self.shotgun_bullets, self.health_items, self.health_img):
                     self.data_collector.update_score(1)  # Update player score
                     self.enemies.remove(enemy)
-                    enemy.drop_health()
+                    enemy.drop_health(self.health_img)
 
             for enemy in self.special_enemies[:]:
                 enemy.move()
                 enemy.shoot(self.enemy_bullets)
-                if enemy.hit(self.bullets, self.special_bullets, self.shotgun_bullets, self.health_items):
+                if enemy.hit(self.bullets, self.special_bullets, self.shotgun_bullets, self.health_items, self.health_img):
                     if enemy.health <= 0:
                         self.player.special_bullet = True
                         self.data_collector.update_score(5)  # Special enemies give more points
@@ -175,9 +187,9 @@ class Game:
             for enemy in self.shotgun_enemies[:]:
                 enemy.move()
                 enemy.shoot(self.enemy_bullets)
-                if enemy.hit(self.bullets, self.special_bullets, self.shotgun_bullets, self.health_items):
+                if enemy.hit(self.bullets, self.special_bullets, self.shotgun_bullets, self.health_items, self.health_img):
                     if enemy.health <= 0:
-                        loot = enemy.drop_loot()
+                        loot = enemy.drop_loot(self.health_img, self.shotgun)
                         self.health_items.extend(loot)
                         self.data_collector.update_score(2)
                         self.shotgun_enemies.remove(enemy)
@@ -230,8 +242,8 @@ class Game:
 
     def draw(self):
         """Render game objects onto the screen."""
-        self.screen.blit(self.background_img, (self.bg_x, 0))
-        self.screen.blit(self.background_img, (self.bg_x + self.WIDTH, 0))
+        self.screen.blit(self.background_img, (self.bg_x, -10))
+        self.screen.blit(self.background_img, (self.bg_x + self.WIDTH, -10))
 
         if self.bg_x <= -self.WIDTH:  # Reset background position when it moves too far
             self.bg_x = 0

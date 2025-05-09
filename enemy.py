@@ -31,24 +31,25 @@ class Enemy:
             enemy_bullets.append(Bullet(self.rect.centerx, self.rect.centery, bullet_speed))
             self.last_shot = pygame.time.get_ticks()
 
-    def drop_health(self):
+    def drop_health(self, health_img):
         """20% chance to drop health."""
         if random.random() < 0.2:
-            return HealthPickup(self.rect.centerx, self.rect.centery)
+            return HealthPickup(self.rect.centerx, self.rect.centery, health_img)
         return None
+
 
     def draw(self, screen, enemy_img):
         """Draw the enemy on screen."""
         screen.blit(enemy_img, self.rect.topleft)
 
-    def hit(self, bullets, special_bullets, shotgun_bullets, health_items):
+    def hit(self, bullets, special_bullets, shotgun_bullets, health_items, health_image):
         """Check if the enemy is hit by a bullet."""
         for bullet in bullets[:]:
             if self.rect.colliderect(bullet.rect):
                 bullets.remove(bullet)
                 self.health -= 1
                 if self.health <= 0:
-                    health_item = self.drop_health()  # Drop health item if the enemy dies
+                    health_item = self.drop_health(health_image)  # Drop health item if the enemy dies
                     if health_item:
                         health_items.append(health_item)
                     return True  # Enemy is dead
@@ -109,17 +110,16 @@ class ShotgunEnemy(Enemy):
             # Update last shot time
             self.last_shot = pygame.time.get_ticks()
 
-    def drop_loot(self):
+    def drop_loot(self, health_img, shotgun_img):
         loot = []
 
         # 20% chance to drop health
         if random.random() < 0.2:
-            loot.append(HealthPickup(self.rect.centerx, self.rect.centery))
+            loot.append(HealthPickup(self.rect.centerx, self.rect.centery, health_img))
 
-        shotgun_pickup = ShotgunBulletPickup(self.rect.centerx, self.rect.centery)
-        loot.append(shotgun_pickup)
-
+        loot.append(ShotgunBulletPickup(self.rect.centerx, self.rect.centery, shotgun_img))
         return loot
+
 
     def draw(self, screen, shotgun_enemy_img):
         """Draw the shotgun enemy with its specific image."""
