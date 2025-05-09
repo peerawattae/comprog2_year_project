@@ -121,6 +121,12 @@ When inside the game (after clicking "Start Game"):
 - Graphs are saved as `graph_image.png` before being displayed.
 
 ---
+## 📐 UML Diagram
 
+Below is the UML diagram for the project structure and interactions:
+
+![UML Diagram](project_UML.png)
+
+---
 Enjoy the game and happy analyzing! 🎯
 ```
