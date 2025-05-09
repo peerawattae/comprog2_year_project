@@ -1,8 +1,7 @@
 import pygame
 import sys
 import threading
-from graph_show import GraphShow  # Import the GraphShow class
-
+from views.graph_show import GraphShow  # Import the GraphShow class
 
 class MainMenu:
     def __init__(self, screen, width, height):

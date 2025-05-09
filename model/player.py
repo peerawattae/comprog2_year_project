@@ -1,7 +1,7 @@
 import pygame
-from constants import PLAYER_SPEED, JUMP_STRENGTH, GRAVITY, BULLET_SPEED, RELOAD_TIME, WHITE
-from bullet import Bullet, SpecialBullet, ShotgunBullet
-from collect_data import GameDataCollector
+from model.constants import PLAYER_SPEED, JUMP_STRENGTH, GRAVITY, BULLET_SPEED, RELOAD_TIME, WHITE
+from model.bullet import Bullet, SpecialBullet, ShotgunBullet
+from model.collect_data import GameDataCollector
 
 
 class Player:

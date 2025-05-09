@@ -1,5 +1,5 @@
 import pygame
-from constants import GREEN
+from model.constants import GREEN
 
 class Platform:
     def __init__(self, x, y, width, height):

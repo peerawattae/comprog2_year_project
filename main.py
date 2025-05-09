@@ -1,12 +1,12 @@
 import pygame
 import random
-from game import Game
-from player import Player
-from level_generator import generate_level
-from collect_data import GameDataCollector
+from controller.game import Game
+from model.player import Player
+from model.level_generator import generate_level
+from model.collect_data import GameDataCollector
 
 # -------- NEW MENU PART START --------
-from menu import MainMenu  # <--- Make sure you have menu.py with MainMenu class
+from views.menu import MainMenu  # <--- Make sure you have menu.py with MainMenu class
 
 # Initialize Pygame
 pygame.init()

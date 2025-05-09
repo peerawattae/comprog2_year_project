@@ -39,7 +39,9 @@ pip install -r requirements.txt
 ```
 .
 ├── main.py                  # Main launcher and menu system
-├── graph_show.py           # Graph class for loading and plotting game data
+├── model                   # Folder that contain model for this game
+├── views                   # Folder contain files for create ui
+├── control                 # control game flow
 ├── game_save.csv           # Game data file (must exist to view stats)
 ├── README.md               # Project documentation
 ```
@@ -127,7 +129,7 @@ When inside the game (after clicking "Start Game"):
 
 Below is the UML diagram for the project structure and interactions:
 
-![UML Diagram](project_UML.png)
+![UML Diagram](game_photo/project_UML.png)
 
 ---
 Enjoy the game and happy analyzing! 🎯

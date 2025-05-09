@@ -1,8 +1,8 @@
 import random
-from game_platform import Platform
-from enemy import Enemy, SpecialEnemy, ShotgunEnemy
-from constants import JUMP_STRENGTH, PLAYER_HEIGHT
-from health_pickup import HealthPickup
+from model.game_platform import Platform
+from model.enemy import Enemy, SpecialEnemy, ShotgunEnemy
+from model.constants import JUMP_STRENGTH, PLAYER_HEIGHT
+from model.health_pickup import HealthPickup
 
 def generate_level(state, width, height):
     platforms = []

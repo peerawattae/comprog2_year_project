@@ -1,13 +1,13 @@
 import pygame
 import random
-from player import Player
-from enemy import Enemy, SpecialEnemy
-from bullet import Bullet, SpecialBullet
-from game_platform import Platform
-from health_pickup import HealthPickup, ShotgunBulletPickup
-from level_generator import generate_level
-from constants import GRAVITY, BULLET_SPEED, ENEMY_BULLET_SPEED, WHITE, RED, GREEN, BLUE, BLACK, YELLOW
-from collect_data import GameDataCollector  # Import the data collection system
+from model.player import Player
+from model.enemy import Enemy, SpecialEnemy
+from model.bullet import Bullet, SpecialBullet
+from model.game_platform import Platform
+from model.health_pickup import HealthPickup, ShotgunBulletPickup
+from model.level_generator import generate_level
+from model.constants import GRAVITY, BULLET_SPEED, ENEMY_BULLET_SPEED, WHITE, RED, GREEN, BLUE, BLACK, YELLOW
+from model.collect_data import GameDataCollector  # Import the data collection system
 import csv
 import os
 

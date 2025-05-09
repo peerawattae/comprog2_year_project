@@ -1,8 +1,8 @@
 import pygame
 import random
-from constants import ENEMY_BULLET_SPEED
-from bullet import Bullet
-from health_pickup import HealthPickup, ShotgunBulletPickup
+from . import constants
+from . import bullet
+from . import health_pickup
 
 class Enemy:
     def __init__(self, x, y, platform, special=False, shotgun=False):
@@ -27,14 +27,14 @@ class Enemy:
     def shoot(self, enemy_bullets):
         """Shoot in the direction the enemy is facing."""
         if pygame.time.get_ticks() - self.last_shot > self.shoot_timer:
-            bullet_speed = ENEMY_BULLET_SPEED * self.direction  # Bullets move based on direction
-            enemy_bullets.append(Bullet(self.rect.centerx, self.rect.centery, bullet_speed))
+            bullet_speed = constants.ENEMY_BULLET_SPEED * self.direction  # Bullets move based on direction
+            enemy_bullets.append(bullet.Bullet(self.rect.centerx, self.rect.centery, bullet_speed))
             self.last_shot = pygame.time.get_ticks()
 
     def drop_health(self, health_img):
         """20% chance to drop health."""
         if random.random() < 0.2:
-            return HealthPickup(self.rect.centerx, self.rect.centery, health_img)
+            return health_pickup.HealthPickup(self.rect.centerx, self.rect.centery, health_img)
         return None
 
 
@@ -98,26 +98,23 @@ class ShotgunEnemy(Enemy):
             # Define the spread directions (center, top-right, bottom-right)
             spread_offsets = [(0, 0), (10, -10), (10, 10)]  # (x, y) offsets for each bullet
 
-            for offset in spread_offsets:
-                # Calculate the bullet's position based on the offsets
-                x_offset, y_offset = offset
-                bullet_speed = ENEMY_BULLET_SPEED * self.direction
-
-                # Create bullet at the enemy's position with the calculated offset
-                bullet = Bullet(self.rect.centerx + x_offset, self.rect.centery + y_offset, bullet_speed)
-                enemy_bullets.append(bullet)
+            for x_offset, y_offset in spread_offsets:
+                bullet_speed = constants.ENEMY_BULLET_SPEED * self.direction
+                new_bullet = bullet.Bullet(self.rect.centerx + x_offset, self.rect.centery + y_offset, bullet_speed)
+                enemy_bullets.append(new_bullet)
 
             # Update last shot time
             self.last_shot = pygame.time.get_ticks()
+
 
     def drop_loot(self, health_img, shotgun_img):
         loot = []
 
         # 20% chance to drop health
         if random.random() < 0.2:
-            loot.append(HealthPickup(self.rect.centerx, self.rect.centery, health_img))
+            loot.append(health_pickup.HealthPickup(self.rect.centerx, self.rect.centery, health_img))
 
-        loot.append(ShotgunBulletPickup(self.rect.centerx, self.rect.centery, shotgun_img))
+        loot.append(health_pickup.ShotgunBulletPickup(self.rect.centerx, self.rect.centery, shotgun_img))
         return loot
 
 
