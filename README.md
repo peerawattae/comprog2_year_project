@@ -16,6 +16,7 @@ Gameplay data is loaded from a `game_save.csv` file and visualized using `matplo
 
 ---
 
+```markdown
 ## 📦 Requirements
 
 Before running the project, ensure you have Python and the required libraries installed.
@@ -26,9 +27,10 @@ Before running the project, ensure you have Python and the required libraries in
 
 ### 📦 Install Required Packages
 
+Install all dependencies using:
+
 ```bash
-pip install pygame matplotlib
-```
+pip install -r requirements.txt
 
 ---
 
