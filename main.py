@@ -17,7 +17,7 @@ FPS = 60
 
 # Set up display
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Cowboy")
+pygame.display.set_caption("WildWest")
 clock = pygame.time.Clock()
 
 # Launch main menu before starting game
