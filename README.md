@@ -1,8 +1,4 @@
-Here’s your cleaned-up and properly formatted `README.md` in valid Markdown. I’ve fixed the broken nesting, removed redundant markdown blocks, and ensured consistency throughout.
 
----
-
-````markdown
 # 🕹️ Game Project with Graph Stats
 
 This is a simple Wild West-themed game menu system built using `pygame` that allows players to:
