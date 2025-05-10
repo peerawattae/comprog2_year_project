@@ -132,5 +132,3 @@ Below is the UML diagram for the project structure and interactions:
 ![UML Diagram](game_photo/project_UML.png)
 
 ---
-Enjoy the game and happy analyzing! 🎯
-```
