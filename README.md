@@ -1,14 +1,13 @@
-# comprog2_year_project
-Sure! Here's the complete `README.md` written in proper Markdown format, including the new control information:
+Here’s your cleaned-up and properly formatted `README.md` in valid Markdown. I’ve fixed the broken nesting, removed redundant markdown blocks, and ensured consistency throughout.
 
 ---
 
-```markdown
+````markdown
 # 🕹️ Game Project with Graph Stats
 
-This is a simple game menu system built using `pygame` that allows players to:
+This is a simple Wild West-themed game menu system built using `pygame` that allows players to:
 
-- Start the game (placeholder or your custom gameplay)
+- Start the game and fight enemies across states
 - View gameplay statistics as graphs (Score, Level, Hits Taken)
 - View a summary of gameplay stats (Average Points, Max Accuracy, etc.)
 
@@ -16,7 +15,6 @@ Gameplay data is loaded from a `game_save.csv` file and visualized using `matplo
 
 ---
 
-```markdown
 ## 📦 Requirements
 
 Before running the project, ensure you have Python and the required libraries installed.
@@ -31,6 +29,7 @@ Install all dependencies using:
 
 ```bash
 pip install -r requirements.txt
+````
 
 ---
 
@@ -38,12 +37,12 @@ pip install -r requirements.txt
 
 ```
 .
-├── main.py                  # Main launcher and menu system
-├── model                   # Folder that contain model for this game
-├── views                   # Folder contain files for create ui
-├── control                 # control game flow
-├── game_save.csv           # Game data file (must exist to view stats)
-├── README.md               # Project documentation
+├── main.py                # Main launcher and menu system
+├── model/                 # Game model classes
+├── views/                 # UI-related files
+├── control/               # Controls game flow
+├── game_save.csv          # Game data file (must exist to view stats)
+├── README.md              # Project documentation
 ```
 
 ---
@@ -53,8 +52,8 @@ pip install -r requirements.txt
 1. **Clone the repository**
 
 ```bash
-git clone <https://github.com/peerawattae/comprog2_year_project.git>
-cd <comprog2_year_project>
+git clone https://github.com/peerawattae/comprog2_year_project.git
+cd comprog2_year_project
 ```
 
 2. **Create or verify the `game_save.csv` file**
@@ -80,15 +79,14 @@ python main.py
 
 When inside the game (after clicking "Start Game"):
 
-| Key | Action           |
-|-----|------------------|
-| W   | Walk Up          |
-| A   | Walk Left        |
-| S   | Walk Down        |
-| D   | Walk Right       |
-| J   | Normal Shoot     |
-| space bar   | Jump     |
-
+| Key      | Action       |
+| -------- | ------------ |
+| W        | Walk Up      |
+| A        | Walk Left    |
+| S        | Walk Down    |
+| D        | Walk Right   |
+| J        | Normal Shoot |
+| Spacebar | Jump         |
 
 ---
 
@@ -96,39 +94,43 @@ When inside the game (after clicking "Start Game"):
 
 ### From the Main Menu:
 
-- **View Stats**  
+* **View Stats**
   Opens a graph menu with options:
-  - **Points**: Shows player score over time.
-  - **Level**: Displays states/levels reached.
-  - **Times Got Shot**: Shows how often the player got hit.
 
-- **Stats Summary**  
-  Shows a text summary of:
-  - Average & Max Points
-  - Average & Max Accuracy (%)
-  - Average & Max Special Pickups
+  * **Points**: Player score over time.
+  * **Level**: States/levels reached.
+  * **Times Got Shot**: Number of times player was hit.
+
+* **Stats Summary**
+  Displays:
+
+  * Average & Max Points
+  * Average & Max Accuracy (%)
+  * Average & Max Special Pickups
 
 ---
 
 ## 🛠️ Customize
 
-- Update `graph_show.py` to add new types of graphs or statistics.
-- Expand your gameplay in `main.py` or a separate gameplay file.
-- Append new data rows to `game_save.csv` after each game session to track progress.
+* Modify `graph_show.py` to add new graph types or statistical metrics.
+* Expand the gameplay logic in `main.py` or related files.
+* Append new rows to `game_save.csv` after each session to track long-term progress.
 
 ---
 
-## 📌 Notes
-
-- The game runs in fullscreen-sized 800x600 by default.
-- Graphs are generated using `matplotlib` and rendered in `pygame` windows.
-- Graphs are saved as `graph_image.png` before being displayed.
-
----
 ## 📐 UML Diagram
 
 Below is the UML diagram for the project structure and interactions:
 
 ![UML Diagram](game_photo/project_UML.png)
+
+---
+
+## 🔗 Resources
+
+* 💻 GitHub Repository: [peerawattae/comprog2\_year\_project](https://github.com/peerawattae/comprog2_year_project.git)
+* 🎥 YouTube Demo Video: [Watch Gameplay Demo](https://youtu.be/8EBVcwT_3yA)
+
+```
 
 ---
