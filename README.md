@@ -125,8 +125,6 @@ Below is the UML diagram for the project structure and interactions:
 ## 🔗 Resources
 
 * 💻 GitHub Repository: [peerawattae/comprog2\_year\_project](https://github.com/peerawattae/comprog2_year_project.git)
-* 🎥 YouTube Demo Video: [Watch Gameplay Demo](https://youtu.be/8EBVcwT_3yA)
-
-```
+* 🎥 YouTube Presentation Video: [Watch Gameplay Demo](https://youtu.be/8EBVcwT_3yA)
 
 ---
