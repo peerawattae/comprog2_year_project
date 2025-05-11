@@ -13,20 +13,31 @@ class MainMenu:
         self.buttons = {
             "Start Game": pygame.Rect(width // 2 - 100, 200, 200, 50),
             "View Stats": pygame.Rect(width // 2 - 100, 300, 200, 50),
-            "Stats Summary": pygame.Rect(width // 2 - 100, 400, 200, 50),
+            ("Stats", "Summary"): pygame.Rect(width // 2 - 100, 400, 200, 50),
             "Quit": pygame.Rect(width // 2 - 100, 500, 200, 50)
         }
+
 
     def draw_menu(self):
         self.screen.fill((30, 30, 30))
         title = self.FONT.render("Main Menu", True, (255, 255, 255))
         self.screen.blit(title, (self.WIDTH // 2 - title.get_width() // 2, 100))
-        for text, rect in self.buttons.items():
+
+        for label, rect in self.buttons.items():
             pygame.draw.rect(self.screen, (50, 150, 200), rect)
-            label = self.FONT.render(text, True, (255, 255, 255))
-            self.screen.blit(label, (rect.x + 30, rect.y + 5))
+
+            if isinstance(label, tuple):
+                for i, line in enumerate(label):
+                    line_surface = self.FONT.render(line, True, (255, 255, 255))
+                    line_rect = line_surface.get_rect(center=(rect.centerx, rect.y + 15 + i * 20))
+                    self.screen.blit(line_surface, line_rect)
+            else:
+                label_surface = self.FONT.render(label, True, (255, 255, 255))
+                label_rect = label_surface.get_rect(center=rect.center)
+                self.screen.blit(label_surface, label_rect)
 
         pygame.display.flip()
+
 
     def run(self):
         while True:
@@ -36,14 +47,17 @@ class MainMenu:
                     return "quit"
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
-                    if self.buttons["Start Game"].collidepoint(mouse_pos):
-                        return "start"
-                    elif self.buttons["View Stats"].collidepoint(mouse_pos):
-                        return "graph"
-                    elif self.buttons["Stats Summary"].collidepoint((mouse_pos)):
-                        return "stats"
-                    elif self.buttons["Quit"].collidepoint(mouse_pos):
-                        return "quit"
+                    for label, rect in self.buttons.items():
+                        if rect.collidepoint(mouse_pos):
+                            if label == "Start Game":
+                                return "start"
+                            elif label == "View Stats":
+                                return "graph"
+                            elif label == ("Stats", "Summary"):
+                                return "stats"
+                            elif label == "Quit":
+                                return "quit"
+
 
     def show_graph(self, graph_type="score"):
         # Generate and save the graph
@@ -83,7 +97,7 @@ class MainMenu:
         buttons = {
             "Points": pygame.Rect(self.WIDTH // 2 - 100, 150, 200, 50),
             "Level": pygame.Rect(self.WIDTH // 2 - 100, 220, 200, 50),
-            "Times Got Shot": pygame.Rect(self.WIDTH // 2 - 100, 290, 200, 50),
+            "Got Shot": pygame.Rect(self.WIDTH // 2 - 100, 290, 200, 50),
             "Back": pygame.Rect(self.WIDTH // 2 - 100, 360, 200, 50)
         }
 
@@ -114,7 +128,7 @@ class MainMenu:
                             elif label == "Level":
                                 graph_show.save_graph("level")
                                 self.show_graph("level")
-                            elif label == "Times Got Shot":
+                            elif label == "Got Shot":
                                 graph_show.save_graph("times_shot")
                                 self.show_graph("times_shot")
 
